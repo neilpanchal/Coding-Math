@@ -17,7 +17,7 @@ int frame = 1;
 int CANVASX = 1280;
 int CANVASY = 720;
 
-boolean bgWhite = false;
+boolean bgWhite = true;
 
 // Color palette
 int lumaNumber = 18, lumaQuality = 60;
@@ -34,17 +34,36 @@ Chroma[] palette = lumaColors.getClusters();
 
 
 // ----------------------------------------------------------------------------
+float centerY, centerX, angle, speed, offset;
+
+
+
+// ----------------------------------------------------------------------------
 void setup() {
 
     size(CANVASX, CANVASY, "processing.core.PGraphicsRetina2D");
     background(getRandomColor().get());
-    frameRate(30);
+    frameRate(60);
     smooth();
+
+    ellipseMode(CENTER);
+
+    centerY = height * 0.5;
+    centerX = width * 0.5;
+    offset = height * 0.4;
+    angle = 0.0;
+    speed = 0.1;
 
 }
 
 void draw() {
+    background (255);
 
+    float y = centerY + (float)Math.sin(angle) * offset;
+
+    fill(0);
+    ellipse(centerX, y, 50, 50);
+    angle = angle + speed;
 }
 
 
