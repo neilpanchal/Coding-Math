@@ -59,10 +59,10 @@ void setup() {
 void draw() {
     background (255);
 
-    float y = centerY + (float)Math.sin(angle) * offset;
+    float x = centerX + (float)Math.sin(angle) * offset;
 
     fill(0);
-    ellipse(centerX, y, 50, 50);
+    ellipse(x, centerY, 50, 50);
     angle = angle + speed;
 }
 
