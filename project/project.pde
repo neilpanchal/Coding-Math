@@ -34,7 +34,7 @@ Chroma[] palette = lumaColors.getClusters();
 
 
 // ----------------------------------------------------------------------------
-float centerY, centerX, angle, speed, offset;
+float centerY, centerX, angle, speed, offset, baseRadius;
 
 
 
@@ -50,19 +50,22 @@ void setup() {
 
     centerY = height * 0.5;
     centerX = width * 0.5;
-    offset = height * 0.4;
+    offset = 150;
     angle = 0.0;
     speed = 0.1;
+
+    baseRadius = 200;
+
 
 }
 
 void draw() {
     background (255);
 
-    float y = centerY + (float)Math.sin(angle) * offset;
+    float radius = baseRadius + (float)Math.sin(angle) * offset;
 
     fill(0);
-    ellipse(centerX, y, 50, 50);
+    ellipse(centerX, centerY, radius, radius);
     angle = angle + speed;
 }
 
