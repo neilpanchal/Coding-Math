@@ -52,7 +52,7 @@ void setup() {
     centerX = width * 0.5;
     offset = height * 0.4;
 
-    radius = 300;
+    radius = 250;
     angle = 0.0;
     speed = 0.1;
 
@@ -61,8 +61,8 @@ void setup() {
 void draw() {
     background (255);
 
-    float xLoc = centerX + (float)Math.cos(angle) * offset;
-    float yLoc = centerY + (float)Math.sin(angle) * offset;
+    float xLoc = centerX + (float)Math.cos(angle) * radius;
+    float yLoc = centerY + (float)Math.sin(angle) * radius;
 
     fill(0);
     ellipse(xLoc, yLoc, 50, 50);
