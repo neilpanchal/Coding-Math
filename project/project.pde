@@ -34,7 +34,7 @@ Chroma[] palette = lumaColors.getClusters();
 
 
 // ----------------------------------------------------------------------------
-float yCenter, xCenter, angle, offset, radius, numObjects, sliceAngle;
+float xLoc, yLoc, dx, dy, angle;
 
 
 
@@ -45,38 +45,42 @@ void setup() {
     background(getRandomColor().get());
     frameRate(60);
     smooth();
-    noLoop();
+    // noLoop();
 
     ellipseMode(CENTER);
 
-    yCenter = height * 0.5;
-    xCenter = width * 0.5;
-    offset = height * 0.4;
+    xLoc = width /2;
+    yLoc = height /2;
 
-
-    radius = 300.0;
-    angle = 0.0;
-
-    numObjects = 20;
-    sliceAngle = (float)Math.PI * 2 / numObjects;
-
-    float xLoc;
-    float yLoc;
-
-    for (int i = 0; i < numObjects; i++) {
-
-        xLoc = xCenter + (float)Math.cos(i*sliceAngle) * radius;
-        yLoc = yCenter + (float)Math.sin(i*sliceAngle) * radius;
-        fill(0);
-        ellipse(xLoc, yLoc, 10, 10);
-    }
+    angle = 0;
 
 }
+
+
+void draw() {
+    background(getRandomColor().get());
+
+    pushMatrix();
+    translate(xLoc, yLoc); // Translate coordinate system to center
+    rotate(angle); // Rotate to match the mouse X,Y
+
+    strokeWeight(2);
+    stroke(0);
+    line(0, 0, 300, 0);
+    popMatrix();
+
+    dx = mouseX - xLoc;
+    dy = mouseY - yLoc;
+    angle = (float)Math.atan2(dy,dx);
+}
+
+
 
 // ----------------------------------------------------------------------------
 void mousePressed() {
 
     background(getRandomColor().get());
+
 }
 
 void keyReleased() {
